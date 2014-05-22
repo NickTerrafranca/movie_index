@@ -3,8 +3,13 @@ a {
   text-decoration: none;
   font-family: 'arial', 'san-serif';
   font-size: 20px;
-
 }
+li {
+  display: inline-block;
+  list-style: none;
+  padding: 4px;
+}
+
 body {
   background-color: #ff4d00;
   margin: 0;

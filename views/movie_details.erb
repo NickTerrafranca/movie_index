@@ -1,0 +1,16 @@
+<h1>Feature Details</h1>
+ <% @details.each do |movie| %>
+ <ul>
+  <li><%= "Title: #{movie[:title]}" %></li>
+  <li><%= "Year: #{movie[:year]}"%></li>
+  <li><%= "Synopsis: #{movie[:synopsis]}" %> </li>
+  <li><%= "Rating: #{movie[:rating]}" %></li>
+  <li><%= "Genre: #{movie[:genre]}"%></li>
+  <li><%= "Production Studio: #{movie[:studio]}"%></li>
+  <% end %>
+</ul>
+
+</body>
+<!--
+title, the year released, the synopsis, the rating, the genre,
+# and the studio that produced it -->
