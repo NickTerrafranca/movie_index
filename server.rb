@@ -9,9 +9,8 @@ def read_movie_data(file_name)
   CSV.foreach(file_name, headers: true, header_converters: :symbol) do |row|
     movies << row.to_hash
   end
-  movies
+  movies.sort_by { |movie| movie[:title] }
 end
-# this returns a array of hashes
 
 def parse_movie_titles(file_name)
   movie_title = []
@@ -23,7 +22,6 @@ def parse_movie_titles(file_name)
   end
   movie_title
 end
-# this returns a array of arrays
 
 get('/') do
   redirect '/movies'
@@ -38,7 +36,10 @@ get('/movies/:id') do
   selected_movie = params[:id]
   all_movie_data = read_movie_data(MOVIES)
   @details = []
+
   all_movie_data.each do |movie|
+
+      # binding.pry
     if movie[:id] == selected_movie
       @details << movie
     end
