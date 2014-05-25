@@ -1,36 +1,41 @@
+data = [{:id=>"3542", :title=>"Breath Made Visible: Anna Halprin", :year=>"2010", :synopsis=>nil, :rating=>nil, :genre=>"Documentary", :studio=>"Argot Pictures"}]
+# data.each do |h|
+#   h.each do |k, v|
+#   unless v == 0 || v == nil || v == ""
+
+#   end
+
+# end
+
 require 'csv'
+require 'pry'
 MOVIES = 'movies.csv'
+
 def read_movie_data(file_name)
   movies = []
   CSV.foreach(file_name, headers: true, header_converters: :symbol) do |row|
     movies << row.to_hash
   end
-  movies[0]
+  movies
 end
 
-# def parse_movie_titles(file_name)
-#   movie_title = []
-#   films = read_movie_data(MOVIES)
 
-#   films.each do |movie|
-#     unless movie_title.include?(movie[:title])
-#       movie_title << [movie[:title], movie[:id]]
-#     end
-#   end
-#   movie_title
-# end
-
-def parse_movie_titles(file_name)
-  movie_title = []
-  films = read_movie_data(MOVIES)
-
-  films.each do |movie|
-
-    unless movie_title.include?(movie[:title])
-      movie_title << movie[:title] << movie[:id]
+def filter_movies(file_name)
+  filtered_movies = []
+  movies = read_movie_data(MOVIES)
+  movies.each do |movie|
+    nil_counter = 0
+    movie.each do |k, v|
+      if v == 0 || v == nil || v == ""
+        nil_counter += 1
+      end
+    end
+    if nil_counter == 0
+      filtered_movies << movie
     end
   end
-  movie_title
+    # binding.pry
+  filtered_movies
 end
-# p parse_movie_titles(MOVIES)
-p read_movie_data(MOVIES)
+
+puts filter_movies(MOVIES)
