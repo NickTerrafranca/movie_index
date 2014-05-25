@@ -36,8 +36,6 @@ get('/movies/:id') do
   @details = []
 
   all_movie_data.each do |movie|
-
-      # binding.pry
     if movie[:id] == selected_movie
       @details << movie
     end

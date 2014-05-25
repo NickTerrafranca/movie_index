@@ -1,14 +1,6 @@
 data = [{:id=>"3542", :title=>"Breath Made Visible: Anna Halprin", :year=>"2010", :synopsis=>nil, :rating=>nil, :genre=>"Documentary", :studio=>"Argot Pictures"}]
-# data.each do |h|
-#   h.each do |k, v|
-#   unless v == 0 || v == nil || v == ""
-
-#   end
-
-# end
 
 require 'csv'
-require 'pry'
 MOVIES = 'movies.csv'
 
 def read_movie_data(file_name)
@@ -34,7 +26,6 @@ def filter_movies(file_name)
       filtered_movies << movie
     end
   end
-    # binding.pry
   filtered_movies
 end
 
